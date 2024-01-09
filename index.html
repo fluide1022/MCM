@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>MCM: Multi-condition Motion Synthesis Framework for Multi-scenario</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,500,600' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="./assets/css/styles.css">
+
+    <meta property="og:site_name" content="MCM: Multi-condition Motion Synthesis Framework for Multi-scenario" />
+    <meta property="og:type" content="video.other" />
+    <meta property="og:title" content="MCM: Multi-condition Motion Synthesis Framework for Multi-scenario" />
+    <meta property="og:description" content="MCM: Multi-condition Motion Synthesis Framework for Multi-scenario. 2023" />
+    <meta property="og:url" content="https://dance2midi.github.io/" />
+
+    <meta property="article:publisher" content="https://dance2midi.github.io/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="MCM: Multi-condition Motion Synthesis Framework for Multi-scenario" />
+    <meta name="twitter:url" content="https://dance2midi.github.io/" />
+
+    <script type="module" src="https://unpkg.com/@google/model-viewer@2.0.1/dist/model-viewer.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.js?features=IntersectionObserver"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://uploads-ssl.webflow.com/51e0d73d83d06baa7a00000f/js/webflow.fd002feec.js"></script>
+    <script src="./assets/scripts/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sticksy/dist/sticksy.min.js"></script>
+</head>
+
+<body class="noscroll">
+    <div id="set-height">
+        <div class="js-sticky-widget">
+            <canvas id="v0"></canvas>
+        </div>
+    </div>
+    <div id="mouse_div">
+        <div class="mouse_scroll">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <div>
+                <span class="m_scroll_arrows unu"></span>
+                <span class="m_scroll_arrows doi"></span>
+                <span class="m_scroll_arrows trei"></span>
+            </div>
+        </div>
+    </div>
+    <script>
+        const html = document.getElementById("set-height");
+        const canvas = document.getElementById("v0");
+        let context = canvas.getContext("2d");
+        const frameCount = 0;
+        let frame_narrow = ""
+
+        function update_narrow() {
+            let w = window.innerWidth;
+            if (w >= 1300) {
+                frame_narrow = "";
+                canvas.width = 2000;
+                canvas.height = 1000;
+                context = canvas.getContext("2d")
+            } else if (w >= 1000) {
+                frame_narrow = "_midrange";
+                canvas.width = 2000;
+                canvas.height = 2000;
+                context = canvas.getContext("2d")
+            } else {
+                frame_narrow = "_narrow";
+                canvas.width = 1000;
+                canvas.height = 2000;
+                context = canvas.getContext("2d")
+            }
+            Sticksy.hardRefreshAll();
+        }
+
+        function drawToCanvas() {
+            const scrollTop = window.pageYOffset; //html.scrollTop;
+            const maxScrollTop = html.scrollHeight; // - window.innerHeight;
+            const scrollFraction = scrollTop / maxScrollTop;
+            const frameIndex = Math.min(
+                frameCount - 1,
+                Math.ceil(scrollFraction * frameCount)
+            );
+
+            const mousefade = 1 - Math.min((scrollFraction / 0.02), 1);
+            document.getElementById("mouse_div").style.opacity = mousefade;
+
+            requestAnimationFrame(() => updateImage(frameIndex + 1))
+        }
+
+        window.addEventListener('resize', function(event) {
+            update_narrow();
+            drawToCanvas();
+        });
+        const currentFrame = index => (
+            `./assets/media/frames${frame_narrow}/${(60 + 2 * (index - 1)).toString().padStart(4, '0')}.jpg`
+        )
+
+        const preloadImages = () => {
+            for (let i = 1; i < frameCount; i++) {
+                const img = new Image();
+                img.src = currentFrame(i);
+            }
+        };
+
+        let setHeight = document.getElementById("set-height");
+        setHeight.style.height = frameCount * 200 + "px";
+
+        const img = new Image()
+        img.src = currentFrame(1);
+        update_narrow();
+        img.onload = function() {
+            context.drawImage(img, 0, 0);
+        }
+
+        const updateImage = index => {
+            img.src = currentFrame(index);
+            context.drawImage(img, 0, 0);
+        }
+
+        window.addEventListener('scroll', () => {
+            drawToCanvas();
+        });
+
+        preloadImages()
+        var stickyElements = Sticksy.initializeAll('.js-sticky-widget')
+    </script>
+
+    <div class="button-bar text-light" style="padding-bottom: 10px; background-color: rgb(35, 35, 35);">
+        <div class="container" style="max-width: 1000px;">
+            <h1 class="text-center"><b>MCM:</b> MCM: Multi-condition Motion Synthesis Framework for Multi-scenario</h1>
+        </div>
+        <div class="container" style="max-width: 1500px; padding-bottom: 50px;">
+            <div class="row authors">
+                <div class="col">
+                    <h5 class="text-center">Zeyu Ling</h5>
+                    <h6 style="margin-top: 10px;" class="text-center">Zhejiang University</h6>
+                </div>
+                <div class="col">
+                    <h5 class="text-center">Bo Han</h5>
+                    <h6 style="margin-top: 10px;" class="text-center">Zhejiang University</h6>
+                </div>
+                <div class="col">
+                    <h5 class="text-center">Yongkang Wong</h5>
+                    <h6 style="margin-top: 10px;" class="text-center">National University Singapore</h6>
+                </div>
+                <div class="col">
+                    <h5 class="text-center">Mohan Kankanhalli</h5>
+                    <h6 style="margin-top: 10px;" class="text-center">National University of Singapore</h6>
+                </div>
+                <div class="col">
+                    <h5 class="text-center">Weidong Geng</h5>
+                    <h6 style="margin-top: 10px;" class="text-center">Zhejiang University</h6>
+                </div>
+            </div>
+        </div>
+        <div class="buttons" style="margin-bottom: 8px;">
+
+            <a class="btn text-light" role="button" href="https://arxiv.org/abs/2309.03031">
+                <svg style="width:50px;height:24px;margin-left:-12px;margin-right:12px" viewBox="0 0 24 24">
+                    <path fill="white" d="M16 0H8C6.9 0 6 .9 6 2V18C6 19.1 6.9 20 8 20H20C21.1 20 22 19.1 22 18V6L16 0M20 18H8V2H15V7H20V18M4 4V22H20V24H4C2.9 24 2 23.1 2 22V4H4M10 10V12H18V10H10M10 14V16H15V14H10Z"></path>
+                </svg>Paper
+            </a>
+
+            <a class="btn text-light" role="button" href="https://github.com/fluide1022/MCM">
+                <svg style="width:50px;height:24px;margin-left:-12px;margin-right:12px" viewBox="0 0 24 24">
+                    <path fill="white" d="M16 0H8C6.9 0 6 .9 6 2V18C6 19.1 6.9 20 8 20H20C21.1 20 22 19.1 22 18V6L16 0M20 18H8V2H15V7H20V18M4 4V22H20V24H4C2.9 24 2 23.1 2 22V4H4M10 10V12H18V10H10M10 14V16H15V14H10Z"></path>
+                </svg>Code
+            </a>
+        </div>
+        
+
+
+    </div>
+    <div style="background-color: rgb(0, 0, 0);">
+        <div class="container text-light" style="max-width: 1100px; padding-top: 30px; padding-bottom: 30px; text-align: justify;">
+            <div class="row">
+                <div class="col-md-12">
+                    <p>
+                        <!-- <strong> -->
+                            Conditional human motion synthesis (HMS) aims to generate human motion sequences that conform to specific conditions. Text and audio represent the two predominant modalities employed as control conditions. While existing research has primarily focused on single conditions, the multi-condition human motion generation remains underexplored. In the present study, we propose a multi-condition HMS framework, termed MCM, based on a dual-branch structure composed of a main branch and a control branch. This framework effectively extends the applicability of the diffusion model, which is initially predicated solely on textual conditions, to auditory conditions. This extension encompasses both music-to-dance and co-speech Human Motion Synthesis (HMS), while preserving the intrinsic quality of motion and the capabilities for semantic association inherent in the original model.
+                            Furthermore, we propose the implementation of a Transformer-based diffusion model, designated as MWNet, as the main branch. This model adeptly apprehends the spatial intricacies and inter-joint correlations inherent in motion sequences, facilitated by the integration of multi-wise self-attention modules.
+                            Extensive experiments show that our method achieves competitive results in single-condition and multi-condition HMS tasks.
+                            
+                        <!-- </strong> -->
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Big grid -->
+    <!-- alsert titke -->
+    <div style="background-color: rgb(60, 60, 60);">
+        <div class="container text-light" style="padding-top: 30px; padding-bottom: 30px; text-align:center;">
+            <h1><strong>Music-text To Dance(In the Wild)</strong></h1>
+        </div>
+    </div>
+    <div style="background-color: rgb(0, 0, 0);">
+        <div class="video-row">
+            <div class="col" style="padding:0; display:grid;">
+                <video class="specialvideo video lazy img-fluid" autoplay muted loop playsinline controls>
+                    <source src="./assets/resources/apologize/video_with_audio.mp4" type="video/mp4"></source>
+                </video>
+            </div>
+            <div class="col" style="padding:0; display:grid;">
+                <video class="specialvideo video lazy img-fluid" autoplay muted loop playsinline controls>
+                    <source src="./assets/resources/baby/video_with_audio.mp4" type="video/mp4"></source>
+                </video>
+            </div>
+            <div class="col" style="padding:0; display:grid;">
+                <video class="specialvideo video lazy img-fluid" autoplay muted loop playsinline controls>
+                    <source src="./assets/resources/fade/video_with_audio.mp4" type="video/mp4"></source>
+                </video>
+            </div>
+        </div>
+    </div>
+
+        <!-- Big grid -->
+    <!-- alsert titke -->
+    <div style="background-color: rgb(60, 60, 60);">
+        <div class="container text-light" style="padding-top: 30px; padding-bottom: 30px; text-align:center;">
+            <h1><strong>Text to Motion</strong></h1>
+        </div>
+    </div>
+    <div style="background-color: rgb(0, 0, 0);">
+        <div class="video-row">
+            <div class="col" style="padding:0; display:grid;">
+                <video class="specialvideo video lazy img-fluid" autoplay muted loop playsinline controls>
+                    <source src="./assets/resources/crawl/video.mp4" type="video/mp4"></source>
+                </video>
+            </div>
+            <div class="col" style="padding:0; display:grid;">
+                <video class="specialvideo video lazy img-fluid" autoplay muted loop playsinline controls>
+                    <source src="./assets/resources/dash_cartwheel/video.mp4" type="video/mp4"></source>
+                </video>
+            </div>
+            <div class="col" style="padding:0; display:grid;">
+                <video class="specialvideo video lazy img-fluid" autoplay muted loop playsinline controls>
+                    <source src="./assets/resources/jump/video.mp4" type="video/mp4"></source>
+                </video>
+            </div>
+        </div>
+    </div>
+
+    <div style="background-color: rgb(60, 60, 60);">
+        <div class="container text-light" style="padding-top: 30px; padding-bottom: 30px; text-align:center;">
+            <h2><strong>The MCM Model, Explained</strong></h2>
+        </div>
+    </div>
+    <div style="background-color: rgb(255, 255, 255);">
+        <div class="container" style="max-width: 1500px; padding-top: 30px; padding-bottom: 30px; ">
+            <div class="row">
+                <div class="col-md-12">
+                    <img src="./assets/media/figure_mcm_overall_arch.png" class="img-fluid" alt="Responsive image">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="background-color: rgb(70, 70, 70);">
+        <div class="container text-light" style="max-width: 1100px; padding-top: 30px; padding-bottom: 30px;text-align: justify;">
+            <div class="row">
+                <div class="col-md-12">
+                    <p> MCM employs a dual-branch architecture, comprising a pre-trained main branch with frozen parameters and a trainable control branch. The main branch is composed of a pre-trained MWNet or an alternative neural network grounded in Denoising Diffusion Probabilistic Models (DDPM), such as MotionDiffuse or MDM. The control branch mirrors the structural framework of the main branch and is initialized utilizing the parameters derived from the main branch.
+
+                        Drawing inspiration from ControlNet, we implement a strategy of optimizing the main branch and control branch independently during distinct stages of the training process.
+                        We pre-train the main branch on the text-to-motion task, with the objective of this phase being to endow the MCM with foundational motion quality and semantic association capabilities. In the training phase of audio-to-motion tasks, all parameters, excluding those assigned to the control branch and bridge module, are maintained in a fixed state. This strategy is implemented to guarantee the retention of the main branch's generative quality and its capabilities in semantic association. 
+                        
+                        For the input to the Control branch, we perform element-wise addition of the Jukebox features with the motion latent vector to incorporate audio information into MCM. 
+                        The output of each layer of the Control branch is added to the input of the main branch through the bridge module, thereby causing a slight offset in the output of the main branch under the control of audio conditions. By performing zero-initialization on the bridge module, we ensure that the initial output of MCM is identical to that of the main branch and gradually adjust the parameters according to the audio during the iterative process.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="background-color: rgb(230, 230, 230);">
+        <div class="container my-text-dark" style="padding-top: 30px; padding-bottom: 30px;">
+            <div class="row">
+                <div class="col">
+                    <!-- 单独的div用于居中显示标题 -->
+                    <div style="text-align: center;">
+                        <h1>Citation</h1>
+                    </div>
+    
+                    <!-- 另一个div用于显示文本，文本靠左对齐 -->
+                    <div style="text-align: left;">
+                        <p>@misc{ling2023mcm,</p>
+                        <p style="text-indent: 50px;">title={MCM: Multi-condition Motion Synthesis Framework for Multi-scenario},</p>
+                        <p style="text-indent: 50px;">author={Zeyu Ling and Bo Han and Yongkang Wong and Mohan Kangkanhalli and Weidong Geng},</p>
+                        <p style="text-indent: 50px;">year={2023},</p>
+                        <p style="text-indent: 50px;">eprint={2309.03031},</p>
+                        <p style="text-indent: 50px;">archivePrefix={arXiv},</p>}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+
+    <div style="background-color: rgb(70, 70, 70);">
+        <div class="container text-light" style="max-width: 768px; padding: 30px 0px;">
+            <div class="row">
+                <div class="col-md-12">
+                    <p>This website draws heavy design inspiration from the excellent <a href="https://edge-dance.github.io//">EDGE</a> site.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

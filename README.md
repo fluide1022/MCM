@@ -26,7 +26,7 @@
     Zhejiang University&emsp;
     National University of Singapore
     <br>
-    arXiv 2024.4
+    MCM was accepted by IJCAI2024.
   </p>
 </p>
 

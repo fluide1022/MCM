@@ -2,7 +2,7 @@
 ![](./assets/figure_main_vis.png)
 
 <p align="center">
-  <a href='https://arxiv.org/pdf/2309.03031.pdf'>
+  <a href='https://arxiv.org/pdf/2404.12886'>
     <img src='https://img.shields.io/badge/Paper-PDF-yellow?style=flat&logo=arXiv&logoColor=yellow'>
   </a>
   <a href='https://fluide1022.github.io/MCM/'>
@@ -17,7 +17,7 @@
 <!-- <h1 align="center">InterDiff: Generating 3D Human-Object Interactions with Physics-Informed Diffusion</h1> -->
 <strong>MCM: Multi-condition Motion Synthesis Framework</strong></h1>
    <p align="center">
-    <a href='' target='_blank'>Zeyu Ling*</a>&emsp;
+    <a href='https://scholar.google.be/citations?hl=nl&user=znEflnQAAAAJ&view_op=list_works&gmla=AOAOcb2TR7qEXM6UaMoS2X58UZTBNRqgsZuX5pVg44IH3QjDY34EcXsYR1ulftMWcE4I2NDA6-JqCvBmLANJgCfgDvkD' target='_blank'>Zeyu Ling*</a>&emsp;
     <a href='' target='_blank'>Bo Han*</a>&emsp;
     <a href='https://scholar.google.com/citations?user=Xa0mxggAAAAJ&hl=zh-CN' target='_blank'>Yongkang Wong</a>&emsp;
     <a href='https://www.comp.nus.edu.sg/~mohan/' target='_blank'>Mohan Kangkanhalli</a>&emsp;
@@ -26,7 +26,7 @@
     Zhejiang University&emsp;
     National University of Singapore
     <br>
-    arXiv 2023.09
+    arXiv 2024.4
   </p>
 </p>
 
@@ -43,22 +43,32 @@
 ## 📜 TODO List
 
 - [ ] Release the dataset preparation and annotations.
-- [ ] Release the main codes for implementation.
+- [√] Release the main codes for implementation.
 - [x] Release the demo video.
 
 ## ⚙️ Implementation
 
-Coming soon!
+We come up with mmotion, together with MCM implementation and other Motion models/
+Please refer to <a href='https://github.com/ZeyuLing/MotionLLaMA'>
 
 ## 🤝 Citation
 
 If you find this repository useful for your work, please consider citing it as follows:
 
 ```
-@article{ling2023mcm,
-  title={Mcm: Multi-condition motion synthesis framework for multi-scenario},
-  author={Ling, Zeyu and Han, Bo and Wong, Yongkang and Kangkanhalli, Mohan and Geng, Weidong},
-  journal={arXiv preprint arXiv:2309.03031},
-  year={2023}
+@inproceedings{2024mcm,
+  title     = {MCM: Multi-condition Motion Synthesis Framework},
+  author    = {Ling, Zeyu and Han, Bo and Wong, Yongkang and Lin, Han and Kankanhalli, Mohan and Geng, Weidong},
+  booktitle = {Proceedings of the Thirty-Third International Joint Conference on
+               Artificial Intelligence, {IJCAI-24}},
+  publisher = {International Joint Conferences on Artificial Intelligence Organization},
+  editor    = {Kate Larson},
+  pages     = {1083--1091},
+  year      = {2024},
+  month     = {8},
+  note      = {Main Track},
+  doi       = {10.24963/ijcai.2024/120},
+  url       = {https://doi.org/10.24963/ijcai.2024/120},
 }
+
 ```

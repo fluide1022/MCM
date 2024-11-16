@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Black">
+    <option name="sdkName" value="Remote Python 3.10.9 (sftp://lzy@192.168.20.11:22/root/anaconda3/envs/video_generation/bin/python)" />
+  </component>
+  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.11" project-jdk-type="Python SDK" />
+</project>

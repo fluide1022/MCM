@@ -42,8 +42,7 @@
 
 ## 📜 TODO List
 
-- [ ] Release the dataset preparation and annotations.
-- [√] Release the main codes for implementation.
+- [x] Release the main codes for implementation.
 - [x] Release the demo video.
 
 ## ⚙️ Implementation

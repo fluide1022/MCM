@@ -16,7 +16,6 @@
 <p align="center">
 <!-- <h1 align="center">InterDiff: Generating 3D Human-Object Interactions with Physics-Informed Diffusion</h1> -->
 <strong>MCM: Multi-condition Motion Synthesis Framework</strong></h1>
-   <p align="center">
     <a href='https://scholar.google.be/citations?hl=nl&user=znEflnQAAAAJ&view_op=list_works&gmla=AOAOcb2TR7qEXM6UaMoS2X58UZTBNRqgsZuX5pVg44IH3QjDY34EcXsYR1ulftMWcE4I2NDA6-JqCvBmLANJgCfgDvkD' target='_blank'>Zeyu Ling*</a>&emsp;
     <a href='' target='_blank'>Bo Han*</a>&emsp;
     <a href='https://scholar.google.com/citations?user=Xa0mxggAAAAJ&hl=zh-CN' target='_blank'>Yongkang Wong</a>&emsp;
@@ -27,7 +26,6 @@
     National University of Singapore
     <br>
     MCM was accepted by IJCAI2024.
-  </p>
 </p>
 
 
@@ -48,7 +46,7 @@
 ## ⚙️ Implementation
 
 We come up with mmotion, together with MCM implementation and other Motion models/
-Please refer to <a href='https://github.com/ZeyuLing/MotionLLaMA'>
+Please refer to <a href='https://github.com/ZeyuLing/MotionLLaMA'>MMotion</a>
 
 ## 🤝 Citation
 
